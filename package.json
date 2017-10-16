@@ -1,0 +1,32 @@
+{
+  "name": "de-builder",
+  "version": "0.1.0",
+  "description": "UI Builder for donation forms",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "node node_modules/webpack/bin/webpack.js",
+    "dev": "webpack-dev-server",
+    "test": "test"
+  },
+  "author": "Augustus Mayo",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "flow-bin": "^0.54.0",
+    "react-dom": "^16.0.0",
+    "shortid": "^2.2.8",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "dependencies": {
+    "payment": "^2.3.0",
+    "react-beautiful-dnd": "^2.4.0"
+  }
+}

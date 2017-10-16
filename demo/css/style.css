@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+}
+
+/** Builder **/
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+[type=color],
+[type=date],
+[type=datetime-local],
+[type=datetime],
+[type=email],
+[type=month],
+[type=number],
+[type=password],
+[type=search],
+[type=tel],
+[type=text],
+[type=time],
+[type=url],
+[type=week],
+[type=checkbox],
+[type=file],
+[type=radio],
+textarea {
+  margin-bottom: 0;
+}
+
+
+.library {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: #eee;
+  border-right: 1px solid #ccc;
+  box-shadow: 1px 0px 5px -2px #ccc;
+  overflow: scroll;
+}
+
+.demo {
+  position: relative;
+  left: 25%;
+  width: 75%;
+  padding: 0 24px;
+  overflow: scroll;
+}
+
+.config-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100%;
+  /*background: #eee;*/
+  background: rgba(240, 240, 240, 0.75);
+  border-left: 1px solid #ccc;
+  box-shadow: -1px 0px 5px -2px #ccc;
+  transform: translateX(100%);
+  transition: transform 500ms;
+  overflow: scroll;
+  z-index: 15;
+}
+
+.comp-config-name {
+  margin-bottom: 8px;
+  border-bottom: 2px solid #777;
+}
+
+.config-item {
+  margin: 4px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.config-item:last-child {
+  border: 0px;
+}
+
+.panel-header {
+  margin: 8px 0 16px;
+  color: #bbb;
+  text-shadow: 0px 1px 5px #fff;
+}
+
+.panel {
+  position: relative;
+  padding: 0 16px;
+  overflow: auto;
+}
+
+.panel-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 16px;
+  background: #ccc;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 250ms;
+}
+
+.panel-close:hover {
+  background: #999;
+}
+
+.comp-list {
+  margin: 0 0 16px;
+}
+
+.component.builder {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  transition: border 250ms;
+}
+
+.component.builder:hover {
+  border-color: #eee;
+}
+
+.component.builder:hover > .config-toggle {
+  opacity: 1;
+}
+
+.config-toggle {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 17px;
+  height: 17px;
+  background: rgba(119, 119, 119, 0.75);
+  border-bottom-left-radius: 8px;
+  color: #fff;
+  transition: background 250ms, opacity 250ms;
+  opacity: 0;
+  z-index: 10;
+}
+
+.config-toggle:hover {
+  background: rgba(89, 89, 89, 1);
+  color: #fff;
+}
+
+.config-icon {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  cursor: pointer;
+}
+
+.config-panel.open {
+  transform: translateX(0);
+}
+
+/** Elements **/
+
+.component {
+  position: relative;
+}

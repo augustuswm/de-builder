@@ -1,0 +1,60 @@
+// @flow
+
+import React, {Component} from 'react';
+import type {Element} from 'react';
+import Tree from '../lib/tree';
+import map from '../mapper/map';
+
+export type Comp = {
+  component: string,
+  config: Object
+};
+
+export type BuildSettings = {
+  enabled: boolean,
+  buildComp: Function
+}
+
+export type RendererProps = {
+  builder: ?BuildSettings,
+  tree: Tree<Comp>
+};
+
+export default class Renderer extends Component<RendererProps, {}> {
+  isBuildMode() {
+    return this.props.builder && this.props.builder.enabled;
+  }
+
+  renderBuilderTools(compId: string) {
+    if (this.props.builder && this.isBuildMode()) {
+      let C = this.props.builder.buildComp;
+      return <C compId={compId}></C>;
+    }
+
+    return '';
+  }
+
+  renderTree(tree: Tree<Comp>): Element<any> {
+    return tree.flatMap(
+      (value: Comp, flattened: Array<Element<any>>): Element<any> => {
+        let C = map(value.component),
+            config = Object.assign({}, value.config),
+            key = config._id,
+            cond = config._cond;
+
+        delete config['_id'];
+        delete config['_cond'];
+
+        return (typeof cond === 'undefined' || cond) &&
+          <C key={key} className={'component' + (this.isBuildMode() ? ' builder' : '')} {...config}>
+            {this.renderBuilderTools(key)}
+            {flattened}
+          </C> || <div></div>;
+      }
+    );
+  }
+
+  render() {
+    return this.renderTree(this.props.tree);
+  }
+}
